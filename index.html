@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset=UTF-8>
+        <meta name=viewport content="width=device-width, initial-scale=1.0"> 
+        <title>CA4</title> 
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src=https://maps.googleapis.com/maps/api/js?key=AIzaSyAMIgy9a5lCCNzWuGWHg8_iq49Pzgtvtxs&libraries=places></script>
+        <script>
+            window.onload = () => {
+                let dkitLocation = { lat: 53.98485693, lng: -6.39410164 }
+    
+    
+                let map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 16,
+                    center: dkitLocation,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeControlOptions: {
+                        mapTypeIds: ["roadmap", "satellite", "hide_poi"]
+                    }
+                })
+    
+                hidePointsOfInterest(map)
+    
+                let infoWindow = new google.maps.InfoWindow()
+    
+    
+                let marker = new google.maps.Marker({
+                    position: dkitLocation,
+                    map: map
+                })
+    
+                google.maps.event.addListener(marker, "click", () => {
+                    infoWindow.setContent("DkIT")
+                    infoWindow.open(map, marker)
+                })
+    
+            }
+    
+    
+            function hidePointsOfInterest(map) {
+                let styles = [
+                    {
+                        "featureType": "poi",
+                        "stylers": [{ "visibility": "off" }]
+                    },
+                    {
+                        "featureType": "transit.station.bus",
+                        "stylers": [{ "visibility": "off" }]
+                    },
+                    {
+                        "featureType": "administrative.country",
+                        "stylers": [{ "color": "#ff0000" }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.province",
+                        "stylers": [{ "color": "#ff0000" }]
+                    }
+                ]
+    
+                let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
+                map.mapTypes.set("hide_poi", styledMapType)
+    
+                map.setMapTypeId("hide_poi")
+            }
+        </script>
+    </head> 
+    <body>  
+        <div class="sidebar">
+            <a class="active" href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
+        <div id=map></div>
+    </body>
+</html>
