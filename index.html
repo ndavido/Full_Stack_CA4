@@ -5,6 +5,7 @@
         <meta name=viewport content="width=device-width, initial-scale=1.0"> 
         <title>CA4</title> 
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src=https://maps.googleapis.com/maps/api/js?key=AIzaSyAMIgy9a5lCCNzWuGWHg8_iq49Pzgtvtxs&libraries=places></script>
         <script>
             window.onload = () => {
@@ -67,12 +68,16 @@
         </script>
     </head> 
     <body>  
-        <div class="sidebar">
-            <a class="active" href="#home">Home</a>
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">Home</a>
             <a href="#news">News</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+            </a>
         </div>
         <div id=map></div>
+        <script src="js/main.js"></script>
     </body>
 </html>
