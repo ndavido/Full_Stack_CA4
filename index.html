@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="icon" type="image/x-icon" href="images/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href=https://fonts.googleapis.com/icon?family=Material+Icons rel=stylesheet>  
         <script src=https://maps.googleapis.com/maps/api/js?key=AIzaSyAMIgy9a5lCCNzWuGWHg8_iq49Pzgtvtxs&libraries=places></script>
     </head> 
     <body>  
@@ -19,6 +20,26 @@
             <i class="fa fa-bars"></i>
             </a>
         </div>
+        <div id=control-panel>
+            <span class=select-location-label>Start:</span>
+            <input id=start type=text><br>
+
+            <br>
+            <span class=select-location-label>End:</span>
+            <input id=end type=text>
+
+            <input type=button onclick=calculateRoute() id=submit value=Submit>
+        </div>
+        <div>
+            <button><i class=material-icons onclick=calculateRoute("DRIVING")>directions_car</i></button>
+            <button><i class=material-icons onclick=calculateRoute("TRANSIT")>directions_bus</i></button>
+            <button><i class=material-icons onclick=calculateRoute("BICYCLING")>directions_bike</i></button>
+            <button><i class=material-icons onclick=calculateRoute("WALKING")>directions_walk</i></button>
+        </div>
+            
+        <h1 id=transport-mode>Driving</h1>
+        
+        <details id=directions><summary>Direction</summary></details>
         <div id=map></div>
         <footer>
             Copyright Commonwealth Games 2022

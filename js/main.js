@@ -35,8 +35,35 @@ window.onload = () => {
     infoWindow.open(map, marker)
   })
 
+  new google.maps.places.Autocomplete(start)
+  new google.maps.places.Autocomplete(end)
+
+  directionsRenderer = new google.maps.DirectionsRenderer()
+  directionsRenderer.setMap(map)
+
+  directionsRenderer.setPanel(document.getElementById("directions"))
+
+  calculateRoute("DRIVING")
 }
 
+function calculateRoute(travelMode = "DRIVING") {
+  document.getElementById("transport-mode").innerHTML = travelMode
+  let start = document.getElementById("start").value
+  let end = document.getElementById("end").value
+
+  let request = {
+    origin: start,
+    destination: end,
+    travelMode: travelMode
+  }
+
+  directionsService = new google.maps.DirectionsService()
+  directionsService.route(request, (route, status) => {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsRenderer.setDirections(route)
+    }
+  })
+}
 
 function hidePointsOfInterest(map) {
   let styles = [
