@@ -36,6 +36,7 @@ window.onload = () => {
   })
 
   new google.maps.places.Autocomplete(start)
+  new google.maps.places.Autocomplete(middle)
   new google.maps.places.Autocomplete(end)
 
   directionsRenderer = new google.maps.DirectionsRenderer()
@@ -49,11 +50,13 @@ window.onload = () => {
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
   let start = document.getElementById("start").value
+  // let middle = document.getElementById("middle").value
   let end = document.getElementById("end").value
 
   let request = {
     origin: start,
     destination: end,
+    // waypoints: [{location: middle}],
     travelMode: travelMode
   }
 
