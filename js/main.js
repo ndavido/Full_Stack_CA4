@@ -1,4 +1,5 @@
 window.onload = () => {
+  let Birmingham = { lat: 52.4796992, lng: -1.9026911 }
 
   let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -89,6 +90,8 @@ function showBirminghamEvents(map){
     infoWindow.setContent("Birmingham")
     infoWindow.open(map, marker)
   })
+
+  console.log("Test")
 
   let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
   map.mapTypes.set("showEvents", styledMapType)
