@@ -41,13 +41,23 @@ window.onload = () => {
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
   let start = document.getElementById("start").value
+  let waypoints = [];
   let middle = document.getElementById("middle").value
   let end = document.getElementById("end").value
+
+  for (let i = 0; i < middle.length; i++) {
+    if (middle.options[i].selected) {
+      waypoints.push({
+        location: middle[i].value,
+        stopover: true,
+      });
+    }
+  }
 
   let request = {
     origin: start,
     destination: end,
-    waypoints: [{location: middle}],
+    waypoints: waypoints,
     travelMode: travelMode
   }
 
