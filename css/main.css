@@ -61,13 +61,6 @@ body {
   }
 }
 
-#map {
-  margin: auto;
-  width: 100%;
-  height: 610px;
-  border: thin solid #ccc;
-}
-
 footer {
   overflow: hidden;
   background-color: #333;
@@ -77,5 +70,12 @@ footer {
   position: absolute;
   color: white;
   text-align: center;
+}
+
+#map {
+  margin: auto;
+  width: 100%;
+  height: 610px;
+  border: thin solid #ccc;
 }
 /*# sourceMappingURL=main.css.map */

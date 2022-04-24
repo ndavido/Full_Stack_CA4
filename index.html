@@ -8,52 +8,6 @@
         <link rel="icon" type="image/x-icon" href="images/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src=https://maps.googleapis.com/maps/api/js?key=AIzaSyAMIgy9a5lCCNzWuGWHg8_iq49Pzgtvtxs&libraries=places></script>
-        <script>
-            window.onload = () => {
-                let dkitLocation = { lat: 53.98485693, lng: -6.39410164 }
-    
-    
-                let map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 16,
-                    center: dkitLocation,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    mapTypeControlOptions: {
-                        mapTypeIds: ["roadmap", "hide_poi"]
-                    }
-                })
-    
-                hidePointsOfInterest(map)
-    
-                let infoWindow = new google.maps.InfoWindow()
-    
-    
-                let marker = new google.maps.Marker({
-                    position: dkitLocation,
-                    map: map
-                })
-    
-                google.maps.event.addListener(marker, "click", () => {
-                    infoWindow.setContent("DkIT")
-                    infoWindow.open(map, marker)
-                })
-    
-            }
-    
-    
-            function hidePointsOfInterest(map) {
-                let styles = [
-                    {
-                        "featureType": "poi",
-                        "stylers": [{ "visibility": "off" }]
-                    }
-                ]
-    
-                let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
-                map.mapTypes.set("hide_poi", styledMapType)
-    
-                map.setMapTypeId("hide_poi")
-            }
-        </script>
     </head> 
     <body>  
         <div class="topnav" id="myTopnav">
