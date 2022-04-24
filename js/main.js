@@ -91,8 +91,6 @@ function showBirminghamEvents(map){
     infoWindow.open(map, marker)
   })
 
-  console.log("Test")
-
   let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
   map.mapTypes.set("showEvents", styledMapType)
 
