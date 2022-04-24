@@ -57,7 +57,7 @@ body {
   top: 0;
   left: 0;
   background-color: white;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   overflow-y: scroll;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -143,6 +143,7 @@ body {
   width: 50%;
   height: 600px;
   border: thin solid #ccc;
+  margin-top: 5px;
 }
 
 footer {

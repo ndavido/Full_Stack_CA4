@@ -1,5 +1,4 @@
 window.onload = () => {
-  let Birmingham = { lat: 52.4796992, lng: -1.9026911 }
 
   let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
@@ -65,6 +64,7 @@ function hidePointsOfInterest(map) {
       "stylers": [{ "visibility": "off" }]
     }
   ]
+  
 
   let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
   map.mapTypes.set("hide_poi", styledMapType)
@@ -79,7 +79,12 @@ function showBirminghamEvents(map){
       "stylers": [{ "visibility": "off" }]
     }
   ]
-  
+
+  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
+  map.mapTypes.set("showEvents", styledMapType)
+
+  map.setMapTypeId("showEvents")
+
   let infoWindow = new google.maps.InfoWindow()
   let marker = new google.maps.Marker({
     position:{ lat: 52.4796992, lng: -1.9026911 },
@@ -90,9 +95,4 @@ function showBirminghamEvents(map){
     infoWindow.setContent("Birmingham")
     infoWindow.open(map, marker)
   })
-
-  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
-  map.mapTypes.set("showEvents", styledMapType)
-
-  map.setMapTypeId("showEvents")
 }
