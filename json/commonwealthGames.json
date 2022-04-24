@@ -1,0 +1,137 @@
+[
+{
+	"id": 1,
+	"name": "Alexander Stadium",
+	"latitude": 52.53033,
+	"longitude": -1.90561,
+	"description": "Alexander Stadium is an international athletics stadium located within Perry Park in Perry Barr, Birmingham, England. It is the main athletics venue of the 2022 Commonwealth Games.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Alexander_Stadium.jpg/250px-Alexander_Stadium.jpg",
+	"events":["Opening Ceremony","Closing Ceremony","Athletics"]
+},
+{
+	"id": 2,
+	"name": "Arena Birmingham",
+	"latitude": 52.479722,
+	"longitude": -1.915,
+	"description": "Utilita Arena Birmingham (previously known as Arena Birmingham, The Barclaycard Arena and originally as the National Indoor Arena) is an indoor arena and sporting venue in central Birmingham, United Kingdom.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Arena_Birmingham_from_the_Secret_Garden_%2823626942848%29.jpg/250px-Arena_Birmingham_from_the_Secret_Garden_%2823626942848%29.jpg",
+	"events":["Gymnastics"]
+},
+{
+	"id": 3,
+	"name": "Cannock Chase",
+	"latitude": 52.746,
+	"longitude": -2.001,
+	"description": "Cannock Chase (grid reference SK000165), often referred to locally as The Chase, is a mixed area of countryside in the county of Staffordshire, England. The area has been designated as the Cannock Chase Area of Outstanding Natural Beauty and is managed by Forestry England.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cannock_Chase_Path.jpg/284px-Cannock_Chase_Path.jpg",
+	"events":["Cycling - Mountain Bike","Cycling - Road","Cycling - Time Trial"]
+},
+{
+	"id": 4,
+	"name": "Coventry Arena",
+	"latitude": 52.448056,
+	"longitude": -1.495556,
+	"description": "Cannock Chase (grid reference SK000165), often referred to locally as The Chase, is a mixed area of countryside in the county of Staffordshire, England. The area has been designated as the Cannock Chase Area of Outstanding Natural Beauty and is managed by Forestry England.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cannock_Chase_Path.jpg/284px-Cannock_Chase_Path.jpg",
+	"events":["Rugby Sevens","Judo","Wrestling"]
+},
+{
+	"id": 5,
+	"name": "Edgbaston Cricket Ground",
+	"latitude": 52.455814,
+	"longitude": -1.902489,
+	"description": "Edgbaston Cricket Ground, also known as the County Ground or Edgbaston Stadium, is a cricket ground in the Edgbaston area of Birmingham, England. It is home to Warwickshire County Cricket Club and its T20 team Birmingham Bears.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Edgbaston_-_view_of_new_stand_from_the_north.jpg/270px-Edgbaston_-_view_of_new_stand_from_the_north.jpg",
+	"events":["Cricket"]
+},
+{
+	"id": 6,
+	"name": "NEC Arena",
+	"latitude": 52.453333,
+	"longitude": -1.719444,
+	"description": "The Resorts World Arena is a multipurpose indoor arena located at the National Exhibition Centre (NEC) in Solihull, England. It has a capacity of 15,685[1] seats. The venue was built as the seventh hall of the NEC complex. After 18 months of construction, the arena opened as the 'Birmingham International Arena' in December 1980 with a concert by Queen.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Genting_Arena_%28cropped%29.jpg/250px-Genting_Arena_%28cropped%29.jpg",
+	"events":["Netball"]
+},
+{
+	"id": 7,
+	"name": "National Exhibition Centre",
+	"latitude": 52.453333,
+	"longitude": -1.719444,
+	"description": "The National Exhibition Centre (NEC) is an exhibition centre located in Marston Green, Solihull, West Midlands, England.[1] It is near junction 6 of the M42 motorway, and is adjacent to Birmingham Airport and Birmingham International railway station. It was opened by the Queen in 1976.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/National_Exhibition_Centre_main_entrance.jpg/220px-National_Exhibition_Centre_main_entrance.jpg",
+	"events":["Para Powerlifting","Weightlifting","Table Tennis","Para Table Tennis","Boxing","Badminton"]
+},
+{
+	"id": 8,
+	"name": "Sandwell Aquatics Centre",
+	"latitude": 52.4896,
+	"longitude": -1.989395,
+	"description": "Sandwell Aquatics Centre will be an indoor facility located in Londonderry, Smethwick, West Midlands, England. It will contain an Olympic-size swimming pool (one of only two in the West Midlands region), a 10-metre diving board with 25 metre pool[1] (the only one in the whole of the Midlands), a community swimming pool and permanent seating for 1,000 spectators with additional seating during the Games.",
+	"image": "https://www.expressandstar.com/resizer/0baTM5rYNjvFbngPgtlOrSy7frM=/1200x0/cloudfront-us-east-1.images.arcpublishing.com/mna/7PZHDJ7FHZHAZGC6MTEIRIYVX4.jpg",
+	"events":["Aquatics"]
+},
+{
+	"id": 9,
+	"name": "Smithfield, Birmingham",
+	"latitude": 52.4759,
+	"longitude": -1.8909,
+	"description": "The area was originally the site of the Birmingham Manor House in which the De Birmingham family had lived for centuries. The house had fallen into decay, a situation it had been in many times since the 16th century.",
+	"image": "https://res.cloudinary.com/dwh6m5mbn/image/upload/q_auto/v1595950276/2_crchzr.jpg",
+	"events":["3x3 Basketball","3x3 Wheelchair Basketball","Beach Volleyball"]
+},
+{
+	"id": 10,
+	"name": "Sutton Park",
+	"latitude": 52.56174,
+	"longitude": -1.85392,
+	"description": "Sutton Park is a large urban park located in Sutton Coldfield, Birmingham, West Midlands, England. Most of the park is a national nature reserve; large parts are also a scheduled monument. Sutton Park is one of the largest urban parks in the United Kingdom. The park covers more than 2,400 acres (970 ha) according to one source,[1] or 2,200 acres (900 ha) according to another.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Longmoor_Pool_-_Summer_2007.jpg/250px-Longmoor_Pool_-_Summer_2007.jpg",
+	"events":["Triathlon"]
+},
+{
+	"id": 11,
+	"name": "St. Nicholas' Park",
+	"latitude": 52.282,
+	"longitude": -1.578,
+	"description": "The area which is now the park was once meadow land, also called St. Nicholas Meadow, and was situated on the southern edge of the town. The site was purchased by Warwick Borough Council in the 1930s in response to the towns growth with formal and children's gardens being laid out. Following World War II the eastern side of the meadow was laid out as playing fields. There was also an outdoor swimming pool for public use. The cottages in the park by the brook were at that time a watermill.",
+	"image": "https://s0.geograph.org.uk/geophotos/05/61/70/5617006_2533732f.jpg",
+	"events":["Cycling Road Race"]
+},
+{
+	"id": 12,
+	"name": "University of Birmingham",
+	"latitude": 52.450556,
+	"longitude": -1.930556,
+	"description": "The University of Birmingham (informally Birmingham University)[8][9] is a public research university located in Edgbaston, Birmingham, United Kingdom. It received its royal charter in 1900 as a successor to Queen's College, Birmingham (founded in 1825 as the Birmingham School of Medicine and Surgery), and Mason Science College (established in 1875 by Sir Josiah Mason), making it the first English civic or 'red brick' university to receive its own royal charter.",
+	"image": "https://lugoldedc.com/wp-content/uploads/2020/10/university-of-birmingham-featured.jpg",
+	"events":["Hockey","Squash"]
+},
+{
+	"id": 13,
+	"name": "Victoria Park",
+	"latitude": 52.287,
+	"longitude": -1.545,
+	"description": "Up until the 1830s the park was just part of farmland on the edge of the growing spa town. It was at that time that one of the local land owning families, the Willes, began to hold archery competitions on the land. In the middle of the nineteenth century Leamington Cricket club made their first home there and in the 1860s the New Riverside Walk was opened. The park was extensively landscaped and redesigned in 1899 to celebrate the Diamond Jubilee of Queen Victoria.",
+	"image": "https://d23iiv8m8qvdxi.cloudfront.net/wp-content/uploads/2015/12/10530765_855785634451235_8839736357468183788_n1.jpg",
+	"events":["Lawn Bowls"]
+},
+{
+	"id": 14,
+	"name": "West Park",
+	"latitude": 52.589667,
+	"longitude":-2.139778,
+	"description": "The largest and most ambitious exhibition held in Wolverhampton was the 1902 Arts and Industrial Exhibition which was sited in West Park. Although housing only one international pavilion, from Canada, the scope and scale of the exhibition mirrored all the advances in other exhibitions of its time. The exhibition site featured several large halls housing machinery, industrial products, a concert hall, two bandstands, a restaurant, and a fun fair with thrill rides and a water chute.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Formal_flower_beds%2C_West_Park%2C_Wolverhampton._-_geograph.org.uk_-_66566.jpg/300px-Formal_flower_beds%2C_West_Park%2C_Wolverhampton._-_geograph.org.uk_-_66566.jpg",
+	"events":["Cycle Time Trials"]
+},
+{
+	"id": 15,
+	"name": "Lee Valley VeloPark",
+	"latitude": 51.5504,
+	"longitude": -0.0153,
+	"description": "Lee Valley VeloPark is a cycling centre on Queen Elizabeth Olympic Park in Stratford, East London. It is owned and managed by Lee Valley Regional Park Authority, and it was opened to the public in March 2014. The facility was one of the permanent venues for the 2012 Olympic and Paralympic Games.",
+	"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/London%2C_The_Olympic_Velodrome%2C_15-11-2014_%2816008863981%29.jpg/300px-London%2C_The_Olympic_Velodrome%2C_15-11-2014_%2816008863981%29.jpg",
+	"events":["Cycling Track"]
+}
+]
