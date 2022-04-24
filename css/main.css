@@ -61,21 +61,25 @@ body {
   }
 }
 
+#map {
+  margin: auto;
+  width: 50%;
+  height: 600px;
+  border: thin solid #ccc;
+}
+
 footer {
   overflow: hidden;
   background-color: #333;
   height: 80px;
-  bottom: 0;
   width: 100%;
   position: absolute;
   color: white;
   text-align: center;
 }
 
-#map {
+.input-area {
+  width: 50%;
   margin: auto;
-  width: 500px;
-  height: 500px;
-  border: thin solid #ccc;
 }
 /*# sourceMappingURL=main.css.map */
