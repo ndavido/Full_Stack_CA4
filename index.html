@@ -14,14 +14,15 @@
     <body>  
         <div class="topnav" id="myTopnav">
             <a href="#home" class="active">Home</a>
-            <a href="#news">News</a>
+            <a onclick="openNav()">Test</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
             </a>
         </div>
-        <form>
+        <form id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="input-area">
                 <div class="mb-3">
                     <label class="form-label">Start Location:</label>

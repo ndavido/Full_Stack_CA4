@@ -7,6 +7,14 @@ function myFunction() {
   }
 }
 
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+
 window.onload = () => {
   let dkitLocation = { lat: 53.98485693, lng: -6.39410164 }
 
