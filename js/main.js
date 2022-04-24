@@ -1,4 +1,5 @@
 window.onload = () => {
+  let Birmingham = { lat: 52.4796992, lng: -1.9026911 }
 
 
   let map = new google.maps.Map(document.getElementById("map"), {
@@ -13,6 +14,12 @@ window.onload = () => {
   hidePointsOfInterest(map)
 
   let infoWindow = new google.maps.InfoWindow()
+
+
+  let marker = new google.maps.Marker({
+    position: Birmingham,
+    map: map
+  })
 
   google.maps.event.addListener(marker, "click", () => {
     infoWindow.setContent("Birmingham")
