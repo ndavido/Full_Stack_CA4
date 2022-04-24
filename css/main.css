@@ -14,7 +14,7 @@ body {
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -61,7 +61,6 @@ body {
   padding: 8px;
   text-decoration: none;
   font-size: 36px;
-  color: #818181;
   display: block;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -138,5 +137,9 @@ footer {
 .input-area {
   width: 50%;
   margin: auto;
+}
+
+.form-label {
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */
