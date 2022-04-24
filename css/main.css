@@ -49,6 +49,20 @@ body {
   transition: 0.5s;
 }
 
+.overlay2 {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  background-color: white;
+  overflow-y: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .overlay-content {
   position: relative;
   top: 25%;
@@ -71,6 +85,13 @@ body {
 }
 
 .overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.overlay2 .closebtn {
   position: absolute;
   top: 20px;
   right: 45px;
@@ -129,6 +150,7 @@ footer {
   background-color: #333;
   height: 80px;
   width: 100%;
+  bottom: 0;
   position: absolute;
   color: white;
   text-align: center;
