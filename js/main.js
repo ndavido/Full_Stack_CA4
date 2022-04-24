@@ -1,23 +1,18 @@
 window.onload = () => {
 
-
   let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
     center: new google.maps.LatLng(52.4796992, -1.9026911),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControlOptions: {
-      mapTypeIds: ["roadmap", "hide_poi"]
+      mapTypeIds: ["roadmap", "hide_poi", "showEvents"]
     }
   })
 
   hidePointsOfInterest(map)
 
-  let infoWindow = new google.maps.InfoWindow()
+  showBirminghamEvents(map)
 
-  google.maps.event.addListener(marker, "click", () => {
-    infoWindow.setContent("Birmingham")
-    infoWindow.open(map, marker)
-  })
 
   new google.maps.places.Autocomplete(start)
   new google.maps.places.Autocomplete(middle)
@@ -75,3 +70,28 @@ function hidePointsOfInterest(map) {
 
   map.setMapTypeId("hide_poi")
 }  
+
+function showBirminghamEvents(map){
+  let styles = [
+    {
+      "featureType": "poi",
+      "stylers": [{ "visibility": "off" }]
+    }
+  ]
+  
+  let infoWindow = new google.maps.InfoWindow()
+  let marker = new google.maps.Marker({
+    position:{ lat: 52.4796992, lng: -1.9026911 },
+    map: map
+  })
+
+  google.maps.event.addListener(marker, "click", () => {
+    infoWindow.setContent("Birmingham")
+    infoWindow.open(map, marker)
+  })
+
+  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
+  map.mapTypes.set("showEvents", styledMapType)
+
+  map.setMapTypeId("showEvents")
+}
