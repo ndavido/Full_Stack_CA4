@@ -24,23 +24,21 @@
         <form>
         <div class="input-area">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Start Location:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Enter the location you are starting at</div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Middle Location:</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-                <div id="emailHelp" class="form-text">Enter the location you would like to stop at first</div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">End Location:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Enter the location you wish to finish your journey at</div>
-              </div>
-           
-
-            <button type="submit" class="btn btn-primary"  onclick=calculateRoute()>Submit</button>
+                <label class="form-label">Start Location:</label>
+                <input type="text" class="form-control" id="start">
+                <div class="form-text">Enter the location you are starting at</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Middle Location:</label>
+                <input type="text" class="form-control" id="middle">
+                <div class="form-text">Enter the location you would like to stop at first</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">End Location:</label>
+                <input type="text" class="form-control" id="end">
+                <div class="form-text">Enter the location you wish to finish your journey at</div>
+            </div>
+            <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick=calculateRoute()>
         </div>
     </form>
         <div>
@@ -53,7 +51,6 @@
         <h1 id=transport-mode>Driving</h1>
         
         <div id=map></div>
-
         <details id=directions><summary>Directions</summary></details>
         <footer>
             Copyright Commonwealth Games 2022
