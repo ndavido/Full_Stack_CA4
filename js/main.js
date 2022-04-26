@@ -1,8 +1,13 @@
+let map = null
+let latLng = {lat: 52.4796992, lng: -1.9026911}
+let placeType = "cafe"
 window.onload = () => {
 
-  let map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 8,
-    center: new google.maps.LatLng(52.4796992, -1.9026911),
+  let services_centre_location = { lat: 52.4796992, lng: -1.9026911 }
+
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 10,
+    center: new google.maps.LatLng(services_centre_location),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControlOptions: {
       mapTypeIds: ["roadmap", "hide_poi", "showEvents"]
@@ -13,6 +18,13 @@ window.onload = () => {
 
   showBirminghamEvents(map)
 
+  displayMap()
+
+  map.addListener("click", (mapsMouseEvent) => 
+  { 
+    latLng = mapsMouseEvent.latLng.toJSON()
+    displayMap()
+  })
 
   new google.maps.places.Autocomplete(start)
   new google.maps.places.Autocomplete(middle)
@@ -26,6 +38,60 @@ window.onload = () => {
   calculateRoute("DRIVING")
 }
 
+
+function displayMap()
+{
+    let service = new google.maps.places.PlacesService(map)                                               
+        
+    service.nearbySearch({
+        location: latLng, // centre of the search
+        radius: 1000, // radius (in metres) of the search
+        type: placeType
+        }, getNearbyServicesMarkers)                                        
+
+    map.setZoom(15)
+    map.panTo(new google.maps.LatLng(latLng.lat, latLng.lng))    
+}
+
+
+let markers = []
+function getNearbyServicesMarkers(results, status)
+{
+    markers.map(marker => marker.setVisible(false))
+    markers = []
+    if (status === google.maps.places.PlacesServiceStatus.OK)
+    {
+        results.map(result =>
+        {
+            createMarker(result)
+        })                   
+    }
+}
+
+
+let infoWindow = new google.maps.InfoWindow()
+function createMarker(place)
+{
+    let icon = {
+        url: place.icon, // url
+        scaledSize: new google.maps.Size(30, 30) // scale the image to an icon size
+    }
+    
+    let marker = new google.maps.Marker({
+        map: map,
+        icon: icon,
+        position: place.geometry.location
+    })
+
+    markers.push(marker)
+    
+    google.maps.event.addListener(marker, "click", () =>
+    {
+        infoWindow.setContent(place.name)
+        infoWindow.open(map, marker)
+    })
+}
+
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
   let start = document.getElementById("start").value
@@ -34,12 +100,11 @@ function calculateRoute(travelMode = "DRIVING") {
   let end = document.getElementById("end").value
 
   for (let i = 0; i < waypoints.length; i++) {
-    if (waypoints.options[i].selected) {
       waypts.push({
         location: waypoints[i].value,
         stopover: true,
       });
-    }
+    
   }
 
   let request = {
