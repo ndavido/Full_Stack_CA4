@@ -21,12 +21,13 @@
         <a href="index.html" class="active">Home</a>
         <a href="# " onclick="openNav()">Route Planner</a>
         <a href="#" onclick="openNav2()">Directions</a>
-        <a href="#about">About</a>
+        <a href="localContext.html">Attractions Near You</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
     <form id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
             <div class="input-area">
                 <div class="mb-3">
@@ -111,7 +112,7 @@
                     <button><i class=material-icons onclick=calculateRoute("WALKING")>directions_walk</i></button>
                 </div>
                 <h1 id=transport-mode>Driving</h1>
-                 <div id=directions>Directions</div>
+                <div id=directions>Directions</div>
                 
             </div>
         </div>
