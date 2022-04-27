@@ -1,5 +1,5 @@
 let map = null
-let latLng = {lat: 52.4796992, lng: -1.9026911}
+let latLng = { lat: 52.4796992, lng: -1.9026911 }
 let placeType = "cafe"
 window.onload = () => {
 
@@ -51,8 +51,7 @@ window.onload = () => {
 
   displayMap()
 
-  map.addListener("click", (mapsMouseEvent) => 
-  { 
+  map.addListener("click", (mapsMouseEvent) => {
     latLng = mapsMouseEvent.latLng.toJSON()
     displayMap()
   })
@@ -70,57 +69,51 @@ window.onload = () => {
 }
 
 
-function displayMap()
-{
-    let service = new google.maps.places.PlacesService(map)                                               
-        
-    service.nearbySearch({
-        location: latLng, // centre of the search
-        radius: 1000, // radius (in metres) of the search
-        type: placeType
-        }, getNearbyServicesMarkers)                                        
+function displayMap() {
+  let service = new google.maps.places.PlacesService(map)
 
-    map.setZoom(15)
-    map.panTo(new google.maps.LatLng(latLng.lat, latLng.lng))    
+  service.nearbySearch({
+    location: latLng, // centre of the search
+    radius: 1000, // radius (in metres) of the search
+    type: placeType
+  }, getNearbyServicesMarkers)
+
+  map.setZoom(15)
+  map.panTo(new google.maps.LatLng(latLng.lat, latLng.lng))
 }
 
 
 let markers = []
-function getNearbyServicesMarkers(results, status)
-{
-    markers.map(marker => marker.setVisible(false))
-    markers = []
-    if (status === google.maps.places.PlacesServiceStatus.OK)
-    {
-        results.map(result =>
-        {
-            createMarker(result)
-        })                   
-    }
+function getNearbyServicesMarkers(results, status) {
+  markers.map(marker => marker.setVisible(false))
+  markers = []
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    results.map(result => {
+      createMarker(result)
+    })
+  }
 }
 
 
 let infoWindow = new google.maps.InfoWindow()
-function createMarker(place)
-{
-    let icon = {
-        url: place.icon, // url
-        scaledSize: new google.maps.Size(30, 30) // scale the image to an icon size
-    }
-    
-    let marker = new google.maps.Marker({
-        map: map,
-        icon: icon,
-        position: place.geometry.location
-    })
+function createMarker(place) {
+  let icon = {
+    url: place.icon, // url
+    scaledSize: new google.maps.Size(30, 30) // scale the image to an icon size
+  }
 
-    markers.push(marker)
-    
-    google.maps.event.addListener(marker, "click", () =>
-    {
-        infoWindow.setContent(place.name)
-        infoWindow.open(map, marker)
-    })
+  let marker = new google.maps.Marker({
+    map: map,
+    icon: icon,
+    position: place.geometry.location
+  })
+
+  markers.push(marker)
+
+  google.maps.event.addListener(marker, "click", () => {
+    infoWindow.setContent(place.name)
+    infoWindow.open(map, marker)
+  })
 }
 
 function calculateRoute(travelMode = "DRIVING") {
@@ -130,13 +123,18 @@ function calculateRoute(travelMode = "DRIVING") {
   let waypoints = document.getElementById("middle").value
   let end = document.getElementById("end").value
 
-  for (let i = 0; i < waypoints.length; i++) {
+  if (start === "" || end === "") {
+    return
+  }
+
+
+    if (waypoints != "") {
       waypts.push({
-        location: waypoints[i].value,
+        location: waypoints,
         stopover: true,
       });
-    
-  }
+    }
+  
 
   let request = {
     origin: start,
@@ -160,15 +158,15 @@ function hidePointsOfInterest(map) {
       "stylers": [{ "visibility": "off" }]
     }
   ]
-  
+
 
   let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
   map.mapTypes.set("hide_poi", styledMapType)
 
   map.setMapTypeId("hide_poi")
-}  
+}
 
-function showBirminghamEvents(map){
+function showBirminghamEvents(map) {
   let styles = [
     {
       "featureType": "poi",
@@ -183,7 +181,7 @@ function showBirminghamEvents(map){
 
   let infoWindow = new google.maps.InfoWindow()
   let marker = new google.maps.Marker({
-    position:{ lat: 52.4796992, lng: -1.9026911 },
+    position: { lat: 52.4796992, lng: -1.9026911 },
     map: map
   })
 
