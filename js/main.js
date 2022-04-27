@@ -120,7 +120,6 @@ function createMarker(place) {
     infoWindow.open(map, marker)
   })
 }
-console.log("test")
 
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
