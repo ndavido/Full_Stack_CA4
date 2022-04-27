@@ -61,7 +61,7 @@ window.onload = () => {
   new google.maps.places.Autocomplete(middle)
   new google.maps.places.Autocomplete(end)
 
-  directionsRenderer = new google.maps.DirectionsRenderer()
+  directionsRenderer = new google.maps.DirectionsRenderer({draggable: true})
   directionsRenderer.setMap(map)
 
   directionsRenderer.setPanel(document.getElementById("directions"))
