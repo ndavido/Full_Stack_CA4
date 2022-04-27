@@ -97,9 +97,11 @@ function getNearbyServicesMarkers(results, status) {
 
 let infoWindow = new google.maps.InfoWindow()
 function createMarker(place) {
+  let service = new google.maps.places.PlacesService(map)
+
   let icon = {
     url: place.icon, // url
-    scaledSize: new google.maps.Size(30, 30) // scale the image to an icon size
+    scaledSize: new google.maps.Size(30, 30), // scale the image to an icon size
   }
 
   let marker = new google.maps.Marker({
@@ -108,13 +110,17 @@ function createMarker(place) {
     position: place.geometry.location
   })
 
-  markers.push(marker)
-
   google.maps.event.addListener(marker, "click", () => {
-    infoWindow.setContent(place.name)
+    request = {
+      placeId: place.place_id,
+      fields: ["name", "formatted_address", "international_phone_number", "icon", "geometry"],
+    };
+    service.getDetails(request, (placeDetails) => infoWindow.setContent(`<p><strong>${placeDetails.name}</strong><br>${placeDetails.formatted_address}</br>${placeDetails.international_phone_number}</p>`))
+
     infoWindow.open(map, marker)
   })
 }
+console.log("test")
 
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
@@ -128,13 +134,13 @@ function calculateRoute(travelMode = "DRIVING") {
   }
 
 
-    if (waypoints != "") {
-      waypts.push({
-        location: waypoints,
-        stopover: true,
-      });
-    }
-  
+  if (waypoints != "") {
+    waypts.push({
+      location: waypoints,
+      stopover: true,
+    });
+  }
+
 
   let request = {
     origin: start,
