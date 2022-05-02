@@ -67,6 +67,57 @@ window.onload = () => {
   directionsRenderer.setPanel(document.getElementById("directions"))
 
   calculateRoute("DRIVING")
+
+fetch("json/commonwealthGames.json")
+.then(response => response.json())
+.then(jsonMapData =>
+{
+  jsonMapData.map(item =>
+  {
+      locations.push([                                                                  
+          `<div id=container>
+               <div id=text>
+                  <p>${item.desciption}</p>
+              </div>
+          </div>`, 
+          parseFloat(item.latitude), 
+          parseFloat(item.longitude)
+      ])
+  })
+
+  let map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: new google.maps.LatLng(locations[0][LATITUDE], locations[0][LONGITUDE]),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+  })
+
+  let infoBox = new InfoBox({
+      disableAutoPan: true,
+      pixelOffset: new google.maps.Size(-55, -195),
+      boxStyle: {
+          opacity: 1,
+          width: "350px"
+      },
+      closeBoxMargin: "20px 20px 0px 0px",
+      closeBoxURL: "images/close_icon.png",
+      infoBoxClearance: new google.maps.Size(1, 1)
+  })
+
+  locations.map(location =>
+  {
+      let marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
+      })
+
+      google.maps.event.addListener(marker, "click", () =>
+      {
+          infoBox.setContent(location[CONTENT])                        
+          map.panTo({lat: location[LATITUDE], lng: location[LONGITUDE]})   
+          infoBox.open(map, marker) 
+      })
+  })
+})
 }
 
 
