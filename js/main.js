@@ -61,7 +61,7 @@ window.onload = () => {
   new google.maps.places.Autocomplete(middle)
   new google.maps.places.Autocomplete(end)
 
-  directionsRenderer = new google.maps.DirectionsRenderer({draggable: true})
+  directionsRenderer = new google.maps.DirectionsRenderer({ draggable: true })
   directionsRenderer.setMap(map)
 
   directionsRenderer.setPanel(document.getElementById("directions"))
@@ -69,11 +69,11 @@ window.onload = () => {
   calculateRoute("DRIVING")
 
 
-const CONTENT = 0,
-                      LATITUDE = 1,
-                      LONGITUDE = 2
-        
-                let birminghamContent = `<div id=birmingham-content>
+  const CONTENT = 0,
+    LATITUDE = 1,
+    LONGITUDE = 2
+
+  let birminghamContent = `<div id=birmingham-content>
                                        <h1>Birmingham "2022 Commonwealth Games</h1>
                                        <div id=content>
                                            <img src = images/commonwealth.png>
@@ -81,25 +81,23 @@ const CONTENT = 0,
                                            <p>For more information, see our website<br><a href=http://www.dkit.ie>www.dkit.ie</a></p>
                                        </div>
                                    </div>`
-        
-                let locations = [
-                    [birminghamContent, 52.4796992, -1.9026911]
-                ]
+
+  let locations = [
+    [birminghamContent, 52.4796992, -1.9026911]
+  ]
 
 
-                locations.map(location =>
-                {
-                    let marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE]),
-                        map: map
-                    })
+  locations.map(location => {
+    let marker = new google.maps.Marker({
+      position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE]),
+      map: map
+    })
 
-                    google.maps.event.addListener(marker, "click", () =>
-                    {
-                        infoWindow.setContent(location[CONTENT])
-                        infoWindow.open(map, marker)
-                    })
-                })
+    google.maps.event.addListener(marker, "click", () => {
+      infoWindow.setContent(location[CONTENT])
+      infoWindow.open(map, marker)
+    })
+  })
 }
 
 
@@ -148,19 +146,19 @@ function createMarker(place) {
     request = {
       placeId: place.place_id,
       fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "icon", "geometry", "business_status", "rating"],
-  };
-  service.getDetails(request, (placeDetails) => infoWindow.setContent(
-         "<p><strong>" 
-          + placeDetails.name 
-          + "<p></strong>" 
-          + (placeDetails.formatted_address).replace(/,/g, ',<br>')
-          + "<p>" 
-          + placeDetails.formatted_phone_number 
-          + "</p>"
-          + placeDetails.business_status
-          + "<p><br>"
-          + placeDetails.rating
-          + " Overall Rating</p>"))
+    };
+    service.getDetails(request, (placeDetails) => infoWindow.setContent(
+      "<p><strong>"
+      + placeDetails.name
+      + "<p></strong>"
+      + (placeDetails.formatted_address).replace(/,/g, ',<br>')
+      + "<p>"
+      + placeDetails.formatted_phone_number
+      + "</p>"
+      + placeDetails.business_status
+      + "<p><br>"
+      + placeDetails.rating
+      + " Overall Rating</p>"))
     infoWindow.open(map, marker)
   })
 }
@@ -223,25 +221,65 @@ function showBirminghamEvents(map) {
     }
   ]
 
+  let CONTENT = 0,
+  LATITUDE = 1,
+  LONGITUDE = 2
+
+let locations = []
+
   fetch('json/commonwealthGames.json')
-  .then(response => response.json())
-  .then(data => console.log(data));
+    .then(response => response.json())
+    .then(jsonMapData => {
+      jsonMapData.map(item => {
+        locations.push([
+          `<div id=container>
+          <div id=text>
+                                    <p>${item.name}</p>
+                                </div>
+                                 <img class=background-image src=${item.image}>
+                                  <div id=text>
+                                    <p>${item.description}</p>
+                                </div>
+                                <div id=text>
+                                    <p>${item.events}</p>
+                                </div>
+                            </div>`,
+          parseFloat(item.latitude),
+          parseFloat(item.longitude)
+        ])
+      })
 
-  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
-  map.mapTypes.set("showEvents", styledMapType)
+      let map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: new google.maps.LatLng(locations[0][LATITUDE], locations[0][LONGITUDE]),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      })
 
-  map.setMapTypeId("showEvents")
+      let infoBox = new InfoBox({
+        disableAutoPan: true,
+        pixelOffset: new google.maps.Size(-55, -195),
+        boxStyle: {
+          opacity: 1,
+          width: "350px"
+        },
+        closeBoxMargin: "20px 20px 0px 0px",
+        closeBoxURL: "images/close_icon.png",
+        infoBoxClearance: new google.maps.Size(1, 1)
+      })
 
-  let infoWindow = new google.maps.InfoWindow()
-  let marker = new google.maps.Marker({
-    position: { lat: 52.4796992, lng: -1.9026911 },
-    map: map
-  })
+      locations.map(location => {
+        let marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
+        })
 
-  google.maps.event.addListener(marker, "click", () => {
-    infoWindow.setContent("Birmingham")
-    infoWindow.open(map, marker)
-  })
+        google.maps.event.addListener(marker, "click", () => {
+          infoBox.setContent(location[CONTENT])
+          map.panTo({ lat: location[LATITUDE], lng: location[LONGITUDE] })
+          infoBox.open(map, marker)
+        })
+      })
+    })
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
