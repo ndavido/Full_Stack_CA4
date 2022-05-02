@@ -73,20 +73,6 @@ window.onload = () => {
     LATITUDE = 1,
     LONGITUDE = 2
 
-  let birminghamContent = `<div id=birmingham-content>
-                                       <h1>Birmingham "2022 Commonwealth Games</h1>
-                                       <div id=content>
-                                           <img src = images/commonwealth.png>
-                                           <p>Dundalk Institute of Technology is the best place to study computing in Ireland.</p>
-                                           <p>For more information, see our website<br><a href=http://www.dkit.ie>www.dkit.ie</a></p>
-                                       </div>
-                                   </div>`
-
-  let locations = [
-    [birminghamContent, 52.4796992, -1.9026911]
-  ]
-
-
   locations.map(location => {
     let marker = new google.maps.Marker({
       position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE]),
@@ -222,28 +208,24 @@ function showBirminghamEvents(map) {
   ]
 
   let CONTENT = 0,
-  LATITUDE = 1,
-  LONGITUDE = 2
+    LATITUDE = 1,
+    LONGITUDE = 2
 
-let locations = []
+  let locations = []
 
   fetch('json/commonwealthGames.json')
     .then(response => response.json())
     .then(jsonMapData => {
       jsonMapData.map(item => {
         locations.push([
-          `<div id=container>
-          <div id=text>
-                                    <p>${item.name}</p>
-                                </div>
-                                 <img class=background-image src=${item.image}>
-                                  <div id=text>
-                                    <p>${item.description}</p>
-                                </div>
-                                <div id=text>
-                                    <p>${item.events}</p>
-                                </div>
-                            </div>`,
+          ` <div class="card">
+              <img class="rounded-t-lg" src=${item.image}>
+                <h5 class="title">${item.name}</h5>
+                <p>${item.description}</p>
+                <ul>
+                  <li>${item.events}</li>
+                </ul>
+            </div>`,
           parseFloat(item.latitude),
           parseFloat(item.longitude)
         ])
@@ -260,10 +242,10 @@ let locations = []
         pixelOffset: new google.maps.Size(-55, -195),
         boxStyle: {
           opacity: 1,
-          width: "350px"
+          width: "100"
         },
-        closeBoxMargin: "20px 20px 0px 0px",
-        closeBoxURL: "images/close_icon.png",
+        closeBoxMargin: "80px 80px 0px 0px",
+        closeBoxURL: "close_image.png",
         infoBoxClearance: new google.maps.Size(1, 1)
       })
 
@@ -280,6 +262,11 @@ let locations = []
         })
       })
     })
+
+  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Commonwealth Games" })
+  map.mapTypes.set("hide_poi", styledMapType)
+
+  map.setMapTypeId("hide_poi")
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
