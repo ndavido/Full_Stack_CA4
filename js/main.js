@@ -14,9 +14,9 @@ window.onload = () => {
       mapTypeIds: ["roadmap", "hide_poi", "showEvents"]
     }
   })
-  infoWindow = new google.maps.InfoWindow();
 
   const locationButton = document.createElement("button");
+  let infoWindow = new google.maps.InfoWindow()
 
   locationButton.textContent = "Pan to Current Location";
   locationButton.classList.add("custom-map-control-button");
@@ -68,56 +68,38 @@ window.onload = () => {
 
   calculateRoute("DRIVING")
 
-fetch("json/commonwealthGames.json")
-.then(response => response.json())
-.then(jsonMapData =>
-{
-  jsonMapData.map(item =>
-  {
-      locations.push([                                                                  
-          `<div id=container>
-               <div id=text>
-                  <p>${item.desciption}</p>
-              </div>
-          </div>`, 
-          parseFloat(item.latitude), 
-          parseFloat(item.longitude)
-      ])
-  })
 
-  let map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
-      center: new google.maps.LatLng(locations[0][LATITUDE], locations[0][LONGITUDE]),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-  })
+const CONTENT = 0,
+                      LATITUDE = 1,
+                      LONGITUDE = 2
+        
+                let birminghamContent = `<div id=birmingham-content>
+                                       <h1>Birmingham "2022 Commonwealth Games</h1>
+                                       <div id=content>
+                                           <img src = images/commonwealth.png>
+                                           <p>Dundalk Institute of Technology is the best place to study computing in Ireland.</p>
+                                           <p>For more information, see our website<br><a href=http://www.dkit.ie>www.dkit.ie</a></p>
+                                       </div>
+                                   </div>`
+        
+                let locations = [
+                    [birminghamContent, 52.4796992, -1.9026911]
+                ]
 
-  let infoBox = new InfoBox({
-      disableAutoPan: true,
-      pixelOffset: new google.maps.Size(-55, -195),
-      boxStyle: {
-          opacity: 1,
-          width: "350px"
-      },
-      closeBoxMargin: "20px 20px 0px 0px",
-      closeBoxURL: "images/close_icon.png",
-      infoBoxClearance: new google.maps.Size(1, 1)
-  })
 
-  locations.map(location =>
-  {
-      let marker = new google.maps.Marker({
-          map: map,
-          position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
-      })
+                locations.map(location =>
+                {
+                    let marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE]),
+                        map: map
+                    })
 
-      google.maps.event.addListener(marker, "click", () =>
-      {
-          infoBox.setContent(location[CONTENT])                        
-          map.panTo({lat: location[LATITUDE], lng: location[LONGITUDE]})   
-          infoBox.open(map, marker) 
-      })
-  })
-})
+                    google.maps.event.addListener(marker, "click", () =>
+                    {
+                        infoWindow.setContent(location[CONTENT])
+                        infoWindow.open(map, marker)
+                    })
+                })
 }
 
 
