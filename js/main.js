@@ -123,9 +123,17 @@ function showBirminghamEvents(map) {
         infoBoxClearance: new google.maps.Size(1, 1)
       })
 
+      const icon = {
+        url: "images/custom_marker.png", // url
+        scaledSize: new google.maps.Size(50, 50), // scaled size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
       locations.map(location => {
         let marker = new google.maps.Marker({
           map: map,
+          icon: icon,
           position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
         })
 
@@ -136,11 +144,6 @@ function showBirminghamEvents(map) {
         })
       })
     })
-
-  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Commonwealth Games" })
-  map.mapTypes.set("hide_poi", styledMapType)
-
-  map.setMapTypeId("hide_poi")
 }
 
 function displayMap() {
@@ -216,14 +219,12 @@ function calculateRoute(travelMode = "DRIVING") {
     return
   }
 
-
   if (waypoints != "") {
     waypts.push({
       location: waypoints,
       stopover: true,
     });
   }
-
 
   let request = {
     origin: start,
@@ -247,8 +248,6 @@ function hidePointsOfInterest(map) {
       "stylers": [{ "visibility": "off" }]
     }
   ]
-
-
   let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
   map.mapTypes.set("hide_poi", styledMapType)
 
