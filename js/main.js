@@ -1,6 +1,7 @@
 let map = null
 let latLng = { lat: 52.4796992, lng: -1.9026911 }
 let placeType = "cafe"
+let url = `json/commonwealthGames.json`
 window.onload = () => {
 
   let services_centre_location = { lat: 52.4796992, lng: -1.9026911 }
@@ -113,10 +114,20 @@ function createMarker(place) {
   google.maps.event.addListener(marker, "click", () => {
     request = {
       placeId: place.place_id,
-      fields: ["name", "formatted_address", "international_phone_number", "icon", "geometry"],
-    };
-    service.getDetails(request, (placeDetails) => infoWindow.setContent(`<p><strong>${placeDetails.name}</strong><br>${placeDetails.formatted_address}</br>${placeDetails.international_phone_number}</p>`))
-
+      fields: ["name", "formatted_address", "place_id", "formatted_phone_number", "icon", "geometry", "business_status", "rating"],
+  };
+  service.getDetails(request, (placeDetails) => infoWindow.setContent(
+         "<p><strong>" 
+          + placeDetails.name 
+          + "<p></strong>" 
+          + (placeDetails.formatted_address).replace(/,/g, ',<br>')
+          + "<p>" 
+          + placeDetails.formatted_phone_number 
+          + "</p>"
+          + placeDetails.business_status
+          + "<p><br>"
+          + placeDetails.rating
+          + " Overall Rating</p>"))
     infoWindow.open(map, marker)
   })
 }
