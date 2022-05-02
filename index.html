@@ -2,130 +2,147 @@
 <html>
 
 <head>
-    <meta charset=UTF-8>
-    <meta name=viewport content="width=device-width, initial-scale=1.0">
-    <title>CA4</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href=https://fonts.googleapis.com/icon?family=Material+Icons rel=stylesheet>
-    <script
-        src=https://maps.googleapis.com/maps/api/js?key=AIzaSyBlUhq09-ZvPLlzEqqGN4ylcWtQ02Uux8w&libraries=places></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <meta charset=UTF-8>
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <title>CA4</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href=https://fonts.googleapis.com/icon?family=Material+Icons rel=stylesheet>
+  <script
+    src=https://maps.googleapis.com/maps/api/js?key=AIzaSyBlUhq09-ZvPLlzEqqGN4ylcWtQ02Uux8w&libraries=places></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
-        <a href="index.html" class="active">Home</a>
-        <a href="# " onclick="openNav()">Route Planner</a>
-        <a href="#" onclick="openNav2()">Directions</a>
-        <a href="localContext.html">Attractions Near You</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-    <div class="dropdown btn btn-dark p-1 rounded-0">
-      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" >
-        <label for=airport>Airport:</label><input name=placeType id=airport type=radio value=airport onclick=placeType="airport";displayMap() checked>
-      </a></li>
-        <li><a class="dropdown-item" >
-        <label for=amusement_park>Amusement Park:</label><input name=placeType id=amusement_park type=radio value=amusement_park onclick=placeType="amusement_park";displayMap() >
-      </a></li>
-        <li><a class="dropdown-item" >
-        <label for=atm>Atm:</label><input name=placeType id=atm type=radio value=atm onclick=placeType="atm";displayMap() >
-      </a></li>
-      <li><a class="dropdown-item" >
-        <label for=bar>Bar:</label><input name=placeType id=bar type=radio value=bar onclick=placeType="bar";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=cafe>Cafe:</label><input name=placeType id=cafe type=radio value=cafe onclick=placeType="cafe";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=doctor>Doctor:</label><input name=placeType id=doctor type=radio value=doctor onclick=placeType="doctor";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=gym>Gym:</label><input name=placeType id=gym type=radio value=gym onclick=placeType="gym";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=liquor_store>Liquor Store:</label><input name=placeType id=liquor_store type=radio value=liquor_store onclick=placeType="liquor_store";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=movie_theater>Movie Theatre:</label><input name=placeType id=movie_theater type=radio value=movie_theater onclick=placeType="movie_theater";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=night_club>Night Club:</label><input name=placeType id=night_club type=radio value=night_club onclick=placeType="night_club";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=restaurant>Restaurant:</label><input name=placeType id=restaurant type=radio value=restaurant onclick=placeType="restaurant";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=spa>Spa:</label><input name=placeType id=spa type=radio value=spa onclick=placeType="spa";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=train_station>Train Station:</label><input name=placeType id=train_station type=radio value=train_station onclick=placeType="train_station";displayMap() >
-      </a></li> 
-        <li><a class="dropdown-item" >
-        <label for=bus_station>Bus Station:</label><input name=placeType id=bus_station type=radio value=bus_station onclick=placeType="bus_station";displayMap() >
-      </a></li> 
-      <li><a class="dropdown-item" >
-        <label for=stadium>Stadium:</label><input name=placeType id=stadium type=radio value=stadium onclick=placeType="stadium";displayMap() >
-      </a></li> 
-      </ul>
-    </div>
-    <form id="myNav" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-            <div class="input-area">
-                <div class="mb-3">
-                    <label class="form-label">Start Location:</label>
-                    <input type="text" class="form-control" id="start">
-                    <div class="form-text">Enter the location you are starting at</div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Middle Location:</label>
-                    <input type="text" class="form-control" id="middle">
-                    <div class="form-text">Enter the location you would like to stop at first</div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">End Location:</label>
-                    <input type="text" class="form-control" id="end">
-                    <div class="form-text">Enter the location you wish to finish your journey at</div>
-                </div>
-                <input type="button" value="Submit" id="submit" class="btn btn-primary"
-                    onclick="calculateRoute(), closeNav()">
-            </div>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html" class="active">Home</a>
+    <a href="# " onclick="openNav()">Route Planner</a>
+    <a href="#" onclick="openNav2()">Directions</a>
+    <a href="localContext.html">Attractions Near You</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="dropdown btn btn-dark p-1 rounded-0">
+    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item">
+          <label for=airport>Airport:</label><input name=placeType id=airport type=radio value=airport
+            onclick=placeType="airport" ;displayMap() checked>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=amusement_park>Amusement Park:</label><input name=placeType id=amusement_park type=radio
+            value=amusement_park onclick=placeType="amusement_park" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=atm>Atm:</label><input name=placeType id=atm type=radio value=atm onclick=placeType="atm"
+            ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=bar>Bar:</label><input name=placeType id=bar type=radio value=bar onclick=placeType="bar"
+            ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=cafe>Cafe:</label><input name=placeType id=cafe type=radio value=cafe onclick=placeType="cafe"
+            ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=doctor>Doctor:</label><input name=placeType id=doctor type=radio value=doctor
+            onclick=placeType="doctor" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=gym>Gym:</label><input name=placeType id=gym type=radio value=gym onclick=placeType="gym"
+            ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=liquor_store>Liquor Store:</label><input name=placeType id=liquor_store type=radio
+            value=liquor_store onclick=placeType="liquor_store" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=movie_theater>Movie Theatre:</label><input name=placeType id=movie_theater type=radio
+            value=movie_theater onclick=placeType="movie_theater" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=night_club>Night Club:</label><input name=placeType id=night_club type=radio value=night_club
+            onclick=placeType="night_club" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=restaurant>Restaurant:</label><input name=placeType id=restaurant type=radio value=restaurant
+            onclick=placeType="restaurant" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=spa>Spa:</label><input name=placeType id=spa type=radio value=spa onclick=placeType="spa"
+            ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=train_station>Train Station:</label><input name=placeType id=train_station type=radio
+            value=train_station onclick=placeType="train_station" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=bus_station>Bus Station:</label><input name=placeType id=bus_station type=radio value=bus_station
+            onclick=placeType="bus_station" ;displayMap()>
+        </a></li>
+      <li><a class="dropdown-item">
+          <label for=stadium>Stadium:</label><input name=placeType id=stadium type=radio value=stadium
+            onclick=placeType="stadium" ;displayMap()>
+        </a></li>
+    </ul>
+  </div>
+  <form id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <div class="input-area">
+        <div class="mb-3">
+          <label class="form-label">Start Location:</label>
+          <input type="text" class="form-control" id="start">
+          <div class="form-text">Enter the location you are starting at</div>
         </div>
-    </form>
-    
+        <div class="mb-3">
+          <label class="form-label">Middle Location:</label>
+          <input type="text" class="form-control" id="middle">
+          <div class="form-text">Enter the location you would like to stop at first</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">End Location:</label>
+          <input type="text" class="form-control" id="end">
+          <div class="form-text">Enter the location you wish to finish your journey at</div>
+        </div>
+        <input type="button" value="Submit" id="submit" class="btn btn-primary" onclick="calculateRoute(), closeNav()">
+      </div>
+    </div>
+  </form>
 
-    <div id=map></div>
-    <div id="myNav2" class="overlay2">
-        <div class="overlay-content">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
-            <div>
-                <div>
-                    <button><i class=material-icons onclick=calculateRoute("DRIVING")>directions_car</i></button>
-                    <button><i class=material-icons onclick=calculateRoute("TRANSIT")>directions_bus</i></button>
-                    <button><i class=material-icons onclick=calculateRoute("BICYCLING")>directions_bike</i></button>
-                    <button><i class=material-icons onclick=calculateRoute("WALKING")>directions_walk</i></button>
-                </div>
-                <h1 id=transport-mode>Driving</h1>
-                <div id=directions>Directions</div>
-                
-            </div>
+
+  <div id=map></div>
+  <div id="myNav2" class="overlay2">
+    <div class="overlay-content">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+      <div>
+        <div>
+          <button><i class=material-icons onclick=calculateRoute("DRIVING")>directions_car</i></button>
+          <button><i class=material-icons onclick=calculateRoute("TRANSIT")>directions_bus</i></button>
+          <button><i class=material-icons onclick=calculateRoute("BICYCLING")>directions_bike</i></button>
+          <button><i class=material-icons onclick=calculateRoute("WALKING")>directions_walk</i></button>
         </div>
+        <h1 id=transport-mode>Driving</h1>
+        <div id=directions>Directions</div>
+
+      </div>
     </div>
-    <footer>
-        Copyright Commonwealth Games 2022
-    </footer>
-    <script src="js/main.js"></script>
-    <script src="js/navbar.js"></script>
+  </div>
+  <footer>
+    Copyright Commonwealth Games 2022
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
 </body>
 
 </html>

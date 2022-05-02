@@ -223,6 +223,10 @@ function showBirminghamEvents(map) {
     }
   ]
 
+  fetch('json/commonwealthGames.json')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
   let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Common Wealth Games Events" })
   map.mapTypes.set("showEvents", styledMapType)
 
