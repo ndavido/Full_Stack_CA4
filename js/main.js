@@ -86,6 +86,62 @@ window.onload = () => {
   })
 }
 
+function showBirminghamEvents(map) {
+  let CONTENT = 0,
+    LATITUDE = 1,
+    LONGITUDE = 2
+
+  let locations = []
+
+  fetch('json/commonwealthGames.json')
+    .then(response => response.json())
+    .then(jsonMapData => {
+      jsonMapData.map(item => {
+        locations.push([
+          ` <div class="card">
+              <img class="rounded-t-lg" src=${item.image}>
+                <h5 class="title">${item.name}</h5>
+                <p>${item.description}</p>
+                <ul>
+                  <li>${item.events}</li>
+                </ul>
+            </div>`,
+          parseFloat(item.latitude),
+          parseFloat(item.longitude)
+        ])
+      })
+
+      let infoBox = new InfoBox({
+        disableAutoPan: true,
+        pixelOffset: new google.maps.Size(-55, -195),
+        boxStyle: {
+          opacity: 1,
+          width: "350px"
+        },
+        closeBoxMargin: "10px 0px 40px 0px",
+        closeBoxURL: "images/close_icon.png",
+        infoBoxClearance: new google.maps.Size(1, 1)
+      })
+
+      locations.map(location => {
+        let marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
+        })
+
+        google.maps.event.addListener(marker, "click", () => {
+          infoBox.setContent(location[CONTENT])
+          map.panTo({ lat: location[LATITUDE], lng: location[LONGITUDE] })
+          infoBox.open(map, marker)
+        })
+      })
+    })
+
+  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Commonwealth Games" })
+  map.mapTypes.set("hide_poi", styledMapType)
+
+  map.setMapTypeId("hide_poi")
+}
 
 function displayMap() {
   let service = new google.maps.places.PlacesService(map)
@@ -194,76 +250,6 @@ function hidePointsOfInterest(map) {
 
 
   let styledMapType = new google.maps.StyledMapType(styles, { name: "POI Hidden", alt: "Hide Points of Interest" })
-  map.mapTypes.set("hide_poi", styledMapType)
-
-  map.setMapTypeId("hide_poi")
-}
-
-function showBirminghamEvents(map) {
-  let styles = [
-    {
-      "featureType": "poi",
-      "stylers": [{ "visibility": "off" }]
-    }
-  ]
-
-  let CONTENT = 0,
-    LATITUDE = 1,
-    LONGITUDE = 2
-
-  let locations = []
-
-  fetch('json/commonwealthGames.json')
-    .then(response => response.json())
-    .then(jsonMapData => {
-      jsonMapData.map(item => {
-        locations.push([
-          ` <div class="card">
-              <img class="rounded-t-lg" src=${item.image}>
-                <h5 class="title">${item.name}</h5>
-                <p>${item.description}</p>
-                <ul>
-                  <li>${item.events}</li>
-                </ul>
-            </div>`,
-          parseFloat(item.latitude),
-          parseFloat(item.longitude)
-        ])
-      })
-
-      let map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: new google.maps.LatLng(locations[0][LATITUDE], locations[0][LONGITUDE]),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      })
-
-      let infoBox = new InfoBox({
-        disableAutoPan: true,
-        pixelOffset: new google.maps.Size(-55, -195),
-        boxStyle: {
-          opacity: 1,
-          width: "100"
-        },
-        closeBoxMargin: "80px 80px 0px 0px",
-        closeBoxURL: "close_image.png",
-        infoBoxClearance: new google.maps.Size(1, 1)
-      })
-
-      locations.map(location => {
-        let marker = new google.maps.Marker({
-          map: map,
-          position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE])
-        })
-
-        google.maps.event.addListener(marker, "click", () => {
-          infoBox.setContent(location[CONTENT])
-          map.panTo({ lat: location[LATITUDE], lng: location[LONGITUDE] })
-          infoBox.open(map, marker)
-        })
-      })
-    })
-
-  let styledMapType = new google.maps.StyledMapType(styles, { name: "Events", alt: "Commonwealth Games" })
   map.mapTypes.set("hide_poi", styledMapType)
 
   map.setMapTypeId("hide_poi")
