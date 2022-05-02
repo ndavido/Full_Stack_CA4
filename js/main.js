@@ -67,23 +67,6 @@ window.onload = () => {
   directionsRenderer.setPanel(document.getElementById("directions"))
 
   calculateRoute("DRIVING")
-
-
-  const CONTENT = 0,
-    LATITUDE = 1,
-    LONGITUDE = 2
-
-  locations.map(location => {
-    let marker = new google.maps.Marker({
-      position: new google.maps.LatLng(location[LATITUDE], location[LONGITUDE]),
-      map: map
-    })
-
-    google.maps.event.addListener(marker, "click", () => {
-      infoWindow.setContent(location[CONTENT])
-      infoWindow.open(map, marker)
-    })
-  })
 }
 
 function showBirminghamEvents(map) {
@@ -208,22 +191,28 @@ function createMarker(place) {
   })
 }
 
+let waypts = [];
+
+
+function putIntoArray() {
+  let waypoints = document.getElementById("middle").value
+  waypts.push({
+    location: waypoints,
+    stopover: true,
+  });
+}
+
+console.log(waypts)
+
 function calculateRoute(travelMode = "DRIVING") {
   document.getElementById("transport-mode").innerHTML = travelMode
   let start = document.getElementById("start").value
-  let waypts = [];
+  // let waypts = [];
   let waypoints = document.getElementById("middle").value
   let end = document.getElementById("end").value
 
   if (start === "" || end === "") {
     return
-  }
-
-  if (waypoints != "") {
-    waypts.push({
-      location: waypoints,
-      stopover: true,
-    });
   }
 
   let request = {
